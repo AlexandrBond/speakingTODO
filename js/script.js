@@ -3,6 +3,33 @@
 const DB_NAME = "saved_data";
 let countTasks;
 
+let hi,delAll,didIt,chengMind,taskSave,noAdd;
+(function (){
+  hi = new Audio();
+  hi.src = "sounds/Hi.mp3";
+  hi.load();
+
+  delAll = new Audio();
+  delAll.src = "sounds/Delete all.mp3";
+  delAll.load();
+
+  didIt = new Audio();
+  didIt.src = "sounds/Did it.mp3";
+  didIt.load();        
+
+  chengMind = new Audio();
+  chengMind.src = "sounds/Сhanged mind.mp3";
+  chengMind.load();
+
+  taskSave = new Audio();
+  taskSave.src = "sounds/Task save.mp3";
+  taskSave.load();
+
+  noAdd = new Audio();
+  noAdd.src = "sounds/No add.mp3";
+  noAdd.load();
+
+})();
 document.querySelector("#todoForm").addEventListener("submit", (e) => {
   e.preventDefault();
   const inputs = e.target.querySelectorAll("input, textarea");
@@ -13,11 +40,7 @@ document.querySelector("#todoForm").addEventListener("submit", (e) => {
 
   for (const input of inputs) {
     if (!input.value.length) {
-        let noAdd = new Audio();
-        noAdd.src = "sounds/No add.mp3";
-        noAdd.load();
-       // noAdd.play();
-    return setTimeout(()=>{
+        return setTimeout(()=>{
         noAdd.play();
         alert("No way you can add this shit !")
     },500);
@@ -26,18 +49,15 @@ document.querySelector("#todoForm").addEventListener("submit", (e) => {
   }
 
   saveData(obj);
-  renderItem(obj);
-  taskSave();
+    renderItem(obj);
+      taskSaved();
   countTasks = document.querySelectorAll(".taskWrapper");
 
   e.target.reset();
 });
 
-function taskSave(){
-    let taskSave = new Audio();
-    taskSave.src = "sounds/Task save.mp3";
-    taskSave.load();
-    taskSave.play();
+function taskSaved(){
+      taskSave.play();
 };
 
 document.body.addEventListener("click", (e) => {
@@ -51,10 +71,7 @@ document.body.addEventListener("click", (e) => {
       if (countTasks[i] === e.target.closest(".taskWrapper")) {
         if (e.target.name === "delTask") {
           data.splice(data.length - 1 - i, 1);
-          let chengMind = new Audio();
-          chengMind.src = "sounds/Сhanged mind.mp3";
-          chengMind.load();
-          chengMind.play();
+              chengMind.play();
           localStorage.setItem(DB_NAME, JSON.stringify(data));
 
           document.querySelector("#todoItems").innerHTML = "";
@@ -62,17 +79,12 @@ document.body.addEventListener("click", (e) => {
 
           countTasks = document.querySelectorAll(".taskWrapper");
         } else {
-          let didIt = new Audio();
-          
-          data[data.length - 1 - i].completed = data[data.length - 1 - i]
+            data[data.length - 1 - i].completed = data[data.length - 1 - i]
             .completed
             ? false
             : true;
             if (data[data.length - 1 - i].completed){
-              
-          didIt.src = "sounds/Did it.mp3";
-          didIt.load();
-          didIt.play();
+                   didIt.play();
             }
         }
       }
@@ -95,10 +107,7 @@ function saveData(todoItem) {
 }
 
 function deleteAll() {
-  let delAll = new Audio();
-  delAll.src = "sounds/Delete all.mp3";
-  delAll.load();
-  setTimeout(()=>{ delAll.play(); let question=confirm("Do you want to delete ALL this shit ?"); 
+    setTimeout(()=>{ delAll.play(); let question=confirm("Do you want to delete ALL this shit ?"); 
       if (question) {
         document.querySelector("#todoItems").innerHTML = "";
         localStorage.setItem(DB_NAME, JSON.stringify([]));
@@ -168,13 +177,7 @@ function createTemplate(
 }
 
 function clickPic(img){
-    let hi = new Audio();
-    hi.src = "sounds/Hi.mp3";
-    hi.load();
     hi.play();
-console.log('test');
-img.src ="./img/baby2.png"
-setTimeout(()=>img.src='./img/baby1.png',1500)
-
-console.log('this: ', img.src);
+    img.src ="./img/baby2.png"
+    setTimeout(()=>img.src='./img/baby1.png',1500)
 }
