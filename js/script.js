@@ -173,8 +173,8 @@ function clickPic(img){
     hi.load();
     hi.play();
 console.log('test');
-img.src ="/img/baby2.png"
-setTimeout(()=>img.src='/img/baby1.png',1500)
+img.src ="../img/baby2.png"
+setTimeout(()=>img.src='../img/baby1.png',1500)
 
 console.log('this: ', img.src);
 }
