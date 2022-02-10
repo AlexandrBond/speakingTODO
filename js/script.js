@@ -179,5 +179,5 @@ function createTemplate(
 function clickPic(img){
      img.src ="./img/Anisa1.gif"; 
     hi.play();
-    setTimeout(()=>{img.src='./img/baby1a.png'},5900)
+    setTimeout(()=>{img.src='./img/baby1a.png'},5700)
 }
