@@ -177,7 +177,7 @@ function createTemplate(
 }
 
 function clickPic(img){
+     img.src ="./img/Anisa1.gif";//"./img/baby2.png"
     hi.play();
-    img.src ="./img/baby2.png"
-    setTimeout(()=>img.src='./img/baby1.png',1500)
+    setTimeout(()=>{img.src='./img/baby1a.png'},6000)
 }
