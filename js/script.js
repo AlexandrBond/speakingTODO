@@ -175,9 +175,13 @@ function createTemplate(
 
   return mainWrp;
 }
-
+let image;
+( function () {
+  image = new Image();
+  image.src = "./img/Anisa1.gif";
+})();
 function clickPic(img){
-     img.src ="./img/Anisa1.gif"; 
+     img.src =image.src;//"./img/Anisa1.gif"; 
     hi.play();
     setTimeout(()=>{img.src='./img/baby1a.png'},5700)
 }
